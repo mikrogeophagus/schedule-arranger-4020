@@ -12,7 +12,7 @@ describe('/login', () => {
   beforeAll(() => {
     passportStub.install(app);
     passportStub.login({ username: 'testuser' });
-  });
+   });
 
   afterAll(() => {
     passportStub.logout();
@@ -77,7 +77,7 @@ describe('/schedules', () => {
             .expect(/テスト候補2/)
             .expect(/テスト候補3/)
             .expect(200)
-            .end((err, res) => { deleteScheduleAggregate(createdSchedulePath.split('/schedules/')[1], done, err); });
+            .end((err, res) => { deleteScheduleAggregate(createdSchedulePath.split('/schedules/')[1], done, err);});
         });
     });
   });
