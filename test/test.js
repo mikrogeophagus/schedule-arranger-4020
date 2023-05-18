@@ -110,7 +110,7 @@ describe('/schedules/:scheduleId/users/:userId/candidates/:candidateId', () => {
     await request(app)
       .post(`/schedules/${scheduleId}/users/${userId}/candidates/${candidate.candidateId}`)
       .send({ availability: 2 }) // 出席に更新
-      .expect('{"status":"OK","availability":2}')
+      .expect('{"status":"OK","availability":2}');
     const availabilities = await Availability.findAll({
       where: { scheduleId: scheduleId }
     });
