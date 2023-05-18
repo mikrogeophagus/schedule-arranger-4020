@@ -3,7 +3,7 @@ const request = require('supertest');
 const app = require('../app');
 const passportStub = require('passport-stub');
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({ log: [ 'query' ] });
 
 describe('/login', () => {
   beforeAll(() => {
