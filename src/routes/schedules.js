@@ -189,6 +189,28 @@ app.get("/:scheduleId", async (c) => {
               </tr>
             `,
           )}
+          <tr>
+            <th>コメント</th>
+            ${users.map((user) => {
+              const comment = commentMap.get(user.userId);
+              return html`
+                <td>
+                  <p id="${user.isSelf ? "self-comment" : ""}">${comment}</p>
+                  ${user.isSelf
+                    ? html`
+                        <button
+                          data-schedule-id="${schedule.scheduleId}"
+                          data-user-id="${user.userId}"
+                          id="self-comment-button"
+                        >
+                          編集
+                        </button>
+                      `
+                    : ""}
+                </td>
+              `;
+            })}
+          </tr>
         </table>
       `,
     ),
