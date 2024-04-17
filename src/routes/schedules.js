@@ -164,7 +164,15 @@ app.get("/:scheduleId", async (c) => {
                   return html`
                     <td>
                       ${user.isSelf
-                        ? html`<button>${label}</button>`
+                        ? html`<button
+                            data-schedule-id="${schedule.scheduleId}"
+                            data-user-id="${user.userId}"
+                            data-candidate-id="${candidate.candidateId}"
+                            data-availability="${availability}"
+                            class="availability-toggle-button"
+                          >
+                            ${label}
+                          </button>`
                         : html`<p>${label}</p>`}
                     </td>
                   `;
