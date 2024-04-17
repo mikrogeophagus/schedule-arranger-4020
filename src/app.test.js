@@ -20,6 +20,7 @@ function mockIronSession() {
 async function deleteScheduleAggregate(scheduleId) {
   await prisma.availability.deleteMany({ where: { scheduleId } });
   await prisma.candidate.deleteMany({ where: { scheduleId } });
+  await prisma.comment.deleteMany({ where: { scheduleId } });
   await prisma.schedule.delete({ where: { scheduleId } });
 }
 
