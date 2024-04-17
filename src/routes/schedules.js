@@ -138,6 +138,15 @@ app.get("/:scheduleId", async (c) => {
     });
   });
 
+  // コメント取得
+  const comments = await prisma.comment.findMany({
+    where: { scheduleId: schedule.scheduleId },
+  });
+  const commentMap = new Map(); // key: userId, value: comment
+  comments.forEach((comment) => {
+    commentMap.set(comment.userId, comment.comment);
+  });
+
   return c.html(
     layout(
       `予定: ${schedule.scheduleName}`,
